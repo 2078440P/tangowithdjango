@@ -9,6 +9,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^rango/', include('rango.urls')),
+     url(r'^polls/', include('polls.urls',namespace="polls")),
 )
 
 if settings.DEBUG:

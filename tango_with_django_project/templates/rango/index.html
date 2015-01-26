@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rango</title>
+    </head>
+
+    <body>
+        <h1>Rango says...hello world!</h1>
+            <h2> Top Categories</h2>
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+
+            <h2> Top Pages</h2>
+       {% if pages %}
+       		<ul>
+            	{% for page in pages %}
+            	<li><a href="{{ page.url}}">{{ page.title }}</a> - {{ page.category}} </li>
+            	{% endfor %}
+       	</ul>
+        {% else %}
+        	<strong>Sorry, but there are currently no pages.</strong>
+       {% endif %}
+
+        <a href="/rango/about/">About</a>
+    </body>
+</html>
