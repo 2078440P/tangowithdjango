@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'polls',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -63,8 +64,16 @@ TEMPLATE_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute path to the media directory
+
+PASSWORD_HASHERS = (
+'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+
+LOGIN_URL = '/rango/login/'
+
 
 DATABASES = {
     'default': {
