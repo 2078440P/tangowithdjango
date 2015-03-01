@@ -57,7 +57,7 @@ def about(request):
     if request.session.get('visits'):
         count = request.session.get('visits')
     else:
-        count = 0
+        count = 1
     return render(request,'rango/about.html', {'visits':count})
 
 def category(request, category_name_slug):
