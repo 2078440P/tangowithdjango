@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends "rango/base.html" %}
+{% block body_block %}
+<div>
+    <h2>{{ user.username }}</h2>
+    <p>Email: {{ user.email }}</p>
+    {% if userprofile %}
+    <p>Website: <a href="{{ userprofile.website }}">{{ userprofile.website }}</a></p>
+    <br>
+    {% if userprofile.picture %}
+    <img src="{{ userprofile.picture.url }}"  />
+    {% endif %}
+    {% endif %}
+    <a href="/rango/add_profile">Edit Profile</a><br />
+    </div>
+{% endblock %}
