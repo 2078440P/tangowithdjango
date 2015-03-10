@@ -9,7 +9,7 @@ from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from datetime import datetime
-from rango.bing_search import run_query
+from bing_search import run_query
 from django.shortcuts import redirect
 from models import UserProfile
 from django.contrib.auth.models import User
@@ -72,14 +72,17 @@ def category(request, category_name_slug):
     context_dict['result_list'] = None
     context_dict['query'] = None
     if request.method == 'POST':
-        query = request.POST['query'].strip()
+        try:
+            query = request.POST['query'].strip()
 
-        if query:
-            # Run our Bing function to get the results list!
-            result_list = run_query(query)
+            if query:
+                # Run our Bing function to get the results list!
+                 result_list = run_query(query)
 
             context_dict['result_list'] = result_list
             context_dict['query'] = query
+        except:
+            pass
 
 
     try:
@@ -222,7 +225,7 @@ def register_profile(request):
 
 @login_required
 def profile(request):
-    u = User.objects.get(username=request.user.username)
+    u = request.user
     context_dict = {}
     try:
         up = UserProfile.objects.get(user=u)
